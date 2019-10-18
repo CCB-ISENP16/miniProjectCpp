@@ -1,0 +1,2 @@
+# miniProjectCpp
+miniProjectCpp
