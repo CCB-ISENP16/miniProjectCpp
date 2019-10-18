@@ -1,2 +1,1 @@
-# miniProjectCpp
-miniProjectCpp
+# miniproject-isen
