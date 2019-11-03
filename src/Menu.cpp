@@ -6,6 +6,7 @@
 #include "Point.h"
 #include "string.h"
 #include "FigTriangle.h"
+#include "FigArrow.h"
 
 void Menu::run()
 {
@@ -20,7 +21,7 @@ void Menu::run()
 
     while (1)
     {
-        std::cout << "Que voulez vous faire ?\n1) Carré\n2) Croix\n3) Rectangle\n4) Triangle\n5) Save\n6) Quit"
+        std::cout << "Que voulez vous faire ?\n1) Carré\n2) Croix\n3) Rectangle\n4) Triangle\n5) Fleche\n6) Save\n7) Quit"
                   << std::endl;
         std::cin >> choose;
         switch (choose)
@@ -102,18 +103,38 @@ void Menu::run()
             Point place1(X, Y);
             draw.addStockage(triangle, place1);
             place1.~Point();
-            triangle.~Triangle();
-            // cross.~Cross();
+            // triangle.~Triangle();
             break;
         }
 
         case 5:
         {
+            std::cout << "Creation d'une fleche !"<<std::endl;
+            std::cout << "width :" << std::endl;
+            std::cin >> widthf;
+            std::cout << "height :" << std::endl;
+            std::cin >> heightf;
+
+            std::cout << "X :" << std::endl;
+            std::cin >> X;
+            std::cout << "Y :" << std::endl;
+            std::cin >> Y;
+
+            Arrow arrow(widthf, heightf);
+            Point place1(X, Y);
+            draw.addStockage(arrow, place1);
+            place1.~Point();
+            // arrow.~Arrow();
+            break;
+        }
+
+        case 6:
+        {
             save();
             draw.save(FicName);
             break;
         }
-        case 6:
+        case 7:
         {
             quit();
             draw.save(FicName);
