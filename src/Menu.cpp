@@ -19,11 +19,9 @@ void Menu::run()
 
     Drawing draw(width, height);
 
-    std::cout << "H : " << height << "\nW :" << width << std::endl;
-
     while (1)
     {
-        std::cout << "Que voulez vous faire ?\n1) Carré\n2) Croix\n3) Rectangle\n4) Triangle\n5) Fleche\n6) Save\n7) Quit\n8) Open Preview"
+        std::cout << "Que voulez vous faire ?\n1) Carré\n2) Croix\n3) Rectangle\n4) Triangle\n5) Fleche\n6) Save\n7) Open Preview\n8) Quit"
                   << std::endl;
         std::cin >> choose;
         switch (choose)
@@ -45,6 +43,7 @@ void Menu::run()
             draw.addStockage(square, place0);
             place0.~Point();
             square.~Carre();
+            system("clear");
             break;
         }
         case 2:
@@ -65,6 +64,7 @@ void Menu::run()
             draw.addStockage(cross, place1);
             place1.~Point();
             cross.~Cross();
+            system("clear");
             break;
         }
         case 3:
@@ -85,6 +85,7 @@ void Menu::run()
             draw.addStockage(rect, place2);
             rect.~Rect();
             place2.~Point();
+            system("clear");
             break;
         }
 
@@ -106,6 +107,7 @@ void Menu::run()
             draw.addStockage(triangle, place1);
             place1.~Point();
             // triangle.~Triangle();
+            system("clear");
             break;
         }
 
@@ -127,6 +129,7 @@ void Menu::run()
             draw.addStockage(arrow, place1);
             place1.~Point();
             // arrow.~Arrow();
+            system("clear");
             break;
         }
 
@@ -136,7 +139,7 @@ void Menu::run()
             draw.save(FicName);
             break;
         }
-        case 7:
+        case 8:
         {
             quit();
             draw.save(FicName);
@@ -144,12 +147,13 @@ void Menu::run()
             break;
         }
 
-        case 8:
+        case 7:
         {
             snprintf(FicNamePreview + strlen(FicNamePreview), 5, "%s", ".bmp");
             draw.save(FicNamePreview);
             system("xviewer preview.bmp");
             system("rm -rf preview.bmp");
+            system("clear");
             break;
         }
 

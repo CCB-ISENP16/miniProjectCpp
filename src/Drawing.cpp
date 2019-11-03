@@ -44,11 +44,11 @@ void Drawing::drawAFigure(Figure figure, Point place)
     for (int col = 0; col < widhtF; col++)
     {
       image.at(line * width + col +position) = figure.getData(line *widhtF+ col);
-      printf("%d\t",image.at(line * width + col+position));
+      // printf("%d\t",image.at(line * width + col+position));
     }
-    printf("\n");
+    // printf("\n");
   }
-  printf("\n");
+  // printf("\n");
 }
 
 void Drawing::draw()
@@ -61,15 +61,15 @@ void Drawing::draw()
   {
     drawAFigure(figList.at(a),placeList.at(a));
   }
-  for(int line =0;line<height;line++)
-  {
-    for(int col=0;col<width;col++)
-    {
-      printf("%d\t",image.at(line * width + col));
-    }
-    printf("\n");
-  }
-  printf("\n");
+  // for(int line =0;line<height;line++)
+  // {
+  //   for(int col=0;col<width;col++)
+  //   {
+  //     printf("%d\t",image.at(line * width + col));
+  //   }
+  //   printf("\n");
+  // }
+  // printf("\n");
 }
 
 //            _             _                      _    _           _
