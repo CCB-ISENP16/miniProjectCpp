@@ -11,6 +11,8 @@
     drawSegment(Segment(pointHautDroit, pointBasDroit));
     drawSegment(Segment(pointBasDroit, pointBasGauche));
     drawSegment(Segment(pointBasGauche, pointHautGauche));
+    // drawSegment(Segment(pointHautDroit, pointBasGauche));
+    // drawSegment(Segment(pointHautGauche, pointBasDroit));
   }
 
   void Rect::draw() const {

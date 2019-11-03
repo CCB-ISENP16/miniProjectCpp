@@ -4,7 +4,7 @@ CFLAGS = -std=c++11 -g -I$(STB_INCLUDE_PATH) -Isrc
 LDFLAGS =
 
 APP = FigureCreator
-OBJ = miniproj.o Drawing.o Figure.o FigRect.o FigSquare.o FigCross.o Segment.o Point.o Menu.o
+OBJ = miniproj.o Drawing.o Figure.o FigRect.o FigSquare.o FigCross.o Segment.o Point.o Menu.o FigTriangle.o
 
 
 $(APP): $(OBJ)
@@ -37,6 +37,8 @@ Point.o: src/Point.cpp
 Menu.o: src/Menu.cpp
 	g++ $(CFLAGS) -c src/Menu.cpp $(LDFLAGS)
 
+FigTriangle.o: src/FigTriangle.cpp
+	g++ $(CFLAGS) -c src/FigTriangle.cpp $(LDFLAGS)
 
 .PHONY: test clean
 
