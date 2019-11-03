@@ -8,70 +8,95 @@
 
 void Menu::run()
 {
-    std::cout << "choisissez vos dimensions " << std::endl;
-    std::cin >> width, height;
+    std::cout << "width :" << std::endl;
+    std::cin >> width;
+    std::cout << "height :" << std::endl;
+    std::cin >> height;
+
     Drawing draw(width, height);
+
+    std::cout << "H : " << height << "\nW :" << width << std::endl;
+
     while (1)
     {
-        std::cout << "Que voulez vous faire ?" << std::endl;
+        std::cout << "Que voulez vous faire ?\n1) Carré\n2) Croix\n3) Rectangle\n4) Save\n5) Quit\n"
+                  << std::endl;
         std::cin >> choose;
         switch (choose)
         {
+
         case 1:
-            std::cout << "ajouter une figure choisisez la! square [0] , cross [1], rectangle [2] " << std::endl;
-            std::cin >> figure;
-            std::cout << std::endl;
-
-            switch (figure)
-            {
-                case 0:
-                    std::cout << "choisissez la cote du carré, sa position en X et en Y" << std::endl;
-                    std::cin >> widthf, X, Y;
-                    Point place0(X, Y);
-                    Carre square(widthf);
-                    draw.addStockage(square, place0);
-                    place0.~Point();
-                    square.~Carre();
-                    break;
-                
-                case 1:
-                    std::cout << "choisissez les longueurs de la croix, largeur puis longueur, sa position en X et en Y" << std::endl;
-                    std::cin >> widthf, heightf, X, Y;
-                    Cross cross(widthf, heightf);
-                    Point place1(X, Y);
-                    draw.addStockage(cross, place1);
-                    place1.~Point();
-                    cross.~Cross();
-                    break;
-
-                case 2:
-                    std::cout << "choisissez les longueurs du rectangle, largeur puis longueur, sa position en X et en Y" << std::endl;
-                    std::cin >> widthf, heightf, X, Y;
-                    Rect rect(widthf, heightf);
-                    Point place2(X, Y);
-                    draw.addStockage(rect, place2);
-                    rect.~Rect();
-                    place2.~Point();
-                    break;
-
-                default:
-                    break;
-            }
+        {
+            // std::cout << "choisissez la cote du carré, sa position en X et en Y" << std::endl;
+            std::cout << "width :" << std::endl;
+            std::cin >> widthf;
+            std::cout << "X :" << std::endl;
+            std::cin >> X;
+            std::cout << "Y :" << std::endl;
+            std::cin >> Y;
+            Point place0(X, Y);
+            Carre square(widthf);
+            draw.addStockage(square, place0);
+            place0.~Point();
+            square.~Carre();
             break;
-
+        }
         case 2:
-            void save();
+        {
+            std::cout << "width :" << std::endl;
+            std::cin >> widthf;
+            std::cout << "height :" << std::endl;
+            std::cin >> heightf;
+
+            std::cout << "X :" << std::endl;
+            std::cin >> X;
+            std::cout << "Y :" << std::endl;
+            std::cin >> Y;
+
+            Cross cross(widthf, heightf);
+            Point place1(X, Y);
+            draw.addStockage(cross, place1);
+            place1.~Point();
+            cross.~Cross();
+            break;
+        }
+        case 3:
+        {
+            std::cout << "width :" << std::endl;
+            std::cin >> widthf;
+            std::cout << "height :" << std::endl;
+            std::cin >> heightf;
+
+            std::cout << "X :" << std::endl;
+            std::cin >> X;
+            std::cout << "Y :" << std::endl;
+            std::cin >> Y;
+
+            Rect rect(widthf, heightf);
+            Point place2(X, Y);
+            draw.addStockage(rect, place2);
+            rect.~Rect();
+            place2.~Point();
+            break;
+        }
+
+        case 4:
+        {
+            save();
             draw.save(FicName);
             break;
-
-        case 3:
+        }
+        case 5:
+        {
             quit();
             draw.save(FicName);
             exit(0);
             break;
-
+        }
         default:
+        {
             break;
+        }
         }
     }
 }
@@ -80,7 +105,7 @@ void Menu::save()
 {
     std::cout << "Vous allez enregistrer, taper le nom du fichier: (50 caractere max )" << std::endl;
     std::cin >> FicName;
-    snprintf(FicName +strlen(FicName), 5, "%s", ".bmp");
+    snprintf(FicName + strlen(FicName), 5, "%s", ".bmp");
 }
 
 void Menu::quit()
@@ -90,8 +115,8 @@ void Menu::quit()
     snprintf(FicName + strlen(FicName), 5, "%s", ".bmp");
 }
 
-Menu::Menu ()
+Menu::Menu()
 {
     std::cout << "bienvenue dans votre application Paint " << std::endl;
 };
-Menu::~Menu (){};
+Menu::~Menu(){};
