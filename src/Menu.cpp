@@ -10,6 +10,8 @@
 
 void Menu::run()
 {
+    char FicNamePreview[] = "preview";
+
     std::cout << "width :" << std::endl;
     std::cin >> width;
     std::cout << "height :" << std::endl;
@@ -21,7 +23,7 @@ void Menu::run()
 
     while (1)
     {
-        std::cout << "Que voulez vous faire ?\n1) Carré\n2) Croix\n3) Rectangle\n4) Triangle\n5) Fleche\n6) Save\n7) Quit"
+        std::cout << "Que voulez vous faire ?\n1) Carré\n2) Croix\n3) Rectangle\n4) Triangle\n5) Fleche\n6) Save\n7) Quit\n8) Open Preview"
                   << std::endl;
         std::cin >> choose;
         switch (choose)
@@ -30,7 +32,7 @@ void Menu::run()
         case 1:
         {
             // std::cout << "choisissez la cote du carré, sa position en X et en Y" << std::endl;
-            std::cout << "Creation d'un carre !"<<std::endl;
+            std::cout << "Creation d'un carre !" << std::endl;
             std::cout << "width :" << std::endl;
             std::cin >> widthf;
             std::cout << "X :" << std::endl;
@@ -47,7 +49,7 @@ void Menu::run()
         }
         case 2:
         {
-            std::cout << "Creation d'une croix !"<<std::endl;
+            std::cout << "Creation d'une croix !" << std::endl;
             std::cout << "width :" << std::endl;
             std::cin >> widthf;
             std::cout << "height :" << std::endl;
@@ -67,7 +69,7 @@ void Menu::run()
         }
         case 3:
         {
-            std::cout << "Creation d'un rectangle !"<<std::endl;
+            std::cout << "Creation d'un rectangle !" << std::endl;
             std::cout << "width :" << std::endl;
             std::cin >> widthf;
             std::cout << "height :" << std::endl;
@@ -88,7 +90,7 @@ void Menu::run()
 
         case 4:
         {
-            std::cout << "Creation d'un triangle !"<<std::endl;
+            std::cout << "Creation d'un triangle !" << std::endl;
             std::cout << "width :" << std::endl;
             std::cin >> widthf;
             std::cout << "height :" << std::endl;
@@ -109,7 +111,7 @@ void Menu::run()
 
         case 5:
         {
-            std::cout << "Creation d'une fleche !"<<std::endl;
+            std::cout << "Creation d'une fleche !" << std::endl;
             std::cout << "width :" << std::endl;
             std::cin >> widthf;
             std::cout << "height :" << std::endl;
@@ -141,6 +143,16 @@ void Menu::run()
             exit(0);
             break;
         }
+
+        case 8:
+        {
+            snprintf(FicNamePreview + strlen(FicNamePreview), 5, "%s", ".bmp");
+            draw.save(FicNamePreview);
+            system("xviewer preview.bmp");
+            system("rm -rf preview.bmp");
+            break;
+        }
+
         default:
         {
             break;
