@@ -30,20 +30,46 @@ void Drawing::save(std::string filename)
 #ifdef TEST
   createTestImage();
 #endif
+  draw();
   stbi_write_bmp(filename.c_str(), width, height, 1, image.data());
 }
 
-void Drawing::draw(Figure figure, Point place)
+void Drawing::drawAFigure(Figure figure, Point place)
 {
   int heightF=figure.getHeight();
   int widhtF=figure.getWidth();
+  int position = place.getX()+place.getY();
   for (int line = 0; line < heightF; line++)
   {
     for (int col = 0; col < widhtF; col++)
     {
-      image.at(line * widhtF + col) = figure.getData(line * widhtF + col);
+      image.at(line * width + col +position) = figure.getData(line *widhtF+ col);
+      printf("%d\t",image.at(line * width + col+position));
     }
+    printf("\n");
   }
+  printf("\n");
+}
+
+void Drawing::draw()
+{
+  if (placeList.size()!=figList.size())
+  {
+    exit(0);
+  }
+  for(int a=0;a<placeList.size();a++)
+  {
+    drawAFigure(figList.at(a),placeList.at(a));
+  }
+  for(int line =0;line<height;line++)
+  {
+    for(int col=0;col<width;col++)
+    {
+      printf("%d\t",image.at(line * width + col));
+    }
+    printf("\n");
+  }
+  printf("\n");
 }
 
 //            _             _                      _    _           _
@@ -84,4 +110,6 @@ bool Drawing::addStockage(Figure figure, Point place)
       figList.push_back(figure);
     }
   }
+   printf("%ld",placeList.size());
+   fflush(stdout);
 }

@@ -13,12 +13,13 @@ public:
 
   void save(std::string filename);
   
-  void draw(Figure figure, Point place);
-
+  void drawAFigure(Figure figure, Point place);
+  void draw();
+  bool addStockage(Figure figure,Point place);
 private:
   void clearImage();
   void createTestImage();
-  bool addStockage(Figure figure,Point place);
+  
 
 private:
   const int width;

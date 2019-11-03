@@ -1,3 +1,5 @@
+#ifndef SEGMENT_H
+#define SEGMENT_H
 #include "Point.h"
 #include <iostream>
 #include <string>
@@ -14,3 +16,4 @@ public:
 private:
   Point org, ext;
 };
+#endif

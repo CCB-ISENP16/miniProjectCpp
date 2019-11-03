@@ -6,12 +6,9 @@
 
 class Carre : public Rect {
 public:
-  Carre(const int size) : Rect(size, size) {}
+  Carre(const int size);
 
-  void draw() const {
-    std::cout << "Affichage d'un carré : " << std::endl << std::endl;
-    Figure::draw();
-  }
+  void draw() const ;
 };
 
 #endif

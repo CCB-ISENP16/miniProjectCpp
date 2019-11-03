@@ -1,6 +1,3 @@
-#include "Point.h"
-#include "Figure.h"
-#include "Segment.h"
 #include "FigRect.h"
 #include <iostream>
 

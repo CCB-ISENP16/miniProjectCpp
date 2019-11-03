@@ -46,7 +46,7 @@ bool Figure::setPoint(const int col, const int line)
     {
         return false;
     }
-    buffer.at(col * line) = 255;
+    buffer.at(col + width* line) = 255;
     return true;
 }
 
