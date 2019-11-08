@@ -15,7 +15,7 @@ public:
   
   void drawAFigure(Figure figure, Point place);
   void draw();
-  bool addStockage(Figure figure,Point place);
+  bool addStockage(Figure &figure,Point &place);
   void drawInTerminal(bool list);
 private:
   void clearImage();

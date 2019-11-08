@@ -104,7 +104,7 @@ void Drawing::createTestImage()
 // @param figure the param of the class Figure you want to add to the vector
 // @param place the param of the class Point is the place you want to add to the vector
 // @return if the add is good
-bool Drawing::addStockage(Figure figure, Point place)
+bool Drawing::addStockage(Figure &figure, Point &place)
 {
   if (place.getX() < width || place.getX() > 0)
   {

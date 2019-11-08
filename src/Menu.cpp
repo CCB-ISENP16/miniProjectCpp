@@ -1,12 +1,5 @@
 #include "Menu.h"
-#include "Drawing.h"
-#include "FigSquare.h"
-#include "FigCross.h"
-#include "FigRect.h"
-#include "Point.h"
-#include "string.h"
-#include "FigTriangle.h"
-#include "FigArrow.h"
+
 #include <string>
 
 // @brief this function run is the active menu call for start the appliaction
@@ -32,32 +25,32 @@ void Menu::run()
         switch (choose)
         {
 
-            // case 1:
-            // {
-            //     //for square and cross we use pointer because during the deallocate of memory we have a double free in this area of region
-            //     // std::cout << "choisissez la cote du carré, sa position en X et en Y" << std::endl;
-            //     std::cout << "Creation d'un carre !" << std::endl;
-            //     std::cout << "width :" << std::endl;
-            //     std::cin >> widthf;
-            //     std::cout << "X :" << std::endl;
-            //     std::cin >> X;
-            //     std::cout << "Y :" << std::endl;
-            //     std::cin >> Y;
+            case 1:
+            {
+                //for square and cross we use pointer because during the deallocate of memory we have a double free in this area of region
+                // std::cout << "choisissez la cote du carré, sa position en X et en Y" << std::endl;
+                std::cout << "Creation d'un carre !" << std::endl;
+                std::cout << "width :" << std::endl;
+                std::cin >> widthf;
+                std::cout << "X :" << std::endl;
+                std::cin >> X;
+                std::cout << "Y :" << std::endl;
+                std::cin >> Y;
 
-            //     std::cout << "Thinkness :" << std::endl;
-            //     std::cin >> Thinkness;
+                std::cout << "Thinkness :" << std::endl;
+                std::cin >> Thinkness;
 
-            //     std::cout << "Intensity :" << std::endl;
-            //     std::cin >> Intensity;
+                std::cout << "Intensity :" << std::endl;
+                std::cin >> Intensity;
 
-            //     Point place0(X, Y);
-            //     Carre *square = new Carre(widthf, Thinkness, value);
-            //     draw.addStockage(*square, place0);
-            //     place0.~Point();
-            //     delete (square);
-            //     system("clear");
-            //     break;
-            // }
+                place1 =new Point(X, Y);
+                square = new Carre(widthf, Thinkness, Intensity);
+                draw.addStockage(*square, *place1);
+                delete(place1);
+                delete (square);
+                system("clear");
+                break;
+            }
         case 2:
         {
             std::cout << "Creation d'une croix !" << std::endl;
@@ -77,94 +70,91 @@ void Menu::run()
             std::cout << "Intensity :" << std::endl;
             std::cin >> Intensity;
 
-            Cross *cross = new Cross(widthf, heightf, Thinkness, Intensity);
-            Point place1(X, Y);
-            draw.addStockage(*cross, place1);
-            place1.~Point();
+            cross = new Cross(widthf, heightf, Thinkness, Intensity);
+            place1 =new Point(X, Y);
+            draw.addStockage(*cross, *place1);
+            delete(place1);
             delete (cross);
             system("clear");
             break;
         }
-            // case 3:
-            // {
-            //     std::cout << "Creation d'un rectangle !" << std::endl;
-            //     std::cout << "width :" << std::endl;
-            //     std::cin >> widthf;
-            //     std::cout << "height :" << std::endl;
-            //     std::cin >> heightf;
+            case 3:
+            {
+                std::cout << "Creation d'un rectangle !" << std::endl;
+                std::cout << "width :" << std::endl;
+                std::cin >> widthf;
+                std::cout << "height :" << std::endl;
+                std::cin >> heightf;
 
-            //     std::cout << "X :" << std::endl;
-            //     std::cin >> X;
-            //     std::cout << "Y :" << std::endl;
-            //     std::cin >> Y;
+                std::cout << "X :" << std::endl;
+                std::cin >> X;
+                std::cout << "Y :" << std::endl;
+                std::cin >> Y;
 
-            //     std::cout << "Thinkness :" << std::endl;
-            //     std::cin >> Thinkness;
+                std::cout << "Thinkness :" << std::endl;
+                std::cin >> Thinkness;
 
-            //     Rect rect(widthf, heightf,Thinkness);
-            //     Point place2(X, Y);
-            //     draw.addStockage(rect, place2);
-            //     rect.~Rect();
-            //     place2.~Point();
-            //     system("clear");
-            //     break;
-            // }
+                rect= new Rect(widthf, heightf,Thinkness);
+                place1 = new Point(X, Y);
+                draw.addStockage(*rect, *place1);
+                delete(rect);
+                delete(place1);
+                system("clear");
+                break;
+            }
 
-            // case 4:
-            // {
-            //     std::cout << "Creation d'un triangle !" << std::endl;
-            //     std::cout << "width :" << std::endl;
-            //     std::cin >> widthf;
-            //     std::cout << "height :" << std::endl;
-            //     std::cin >> heightf;
+            case 4:
+            {
+                std::cout << "Creation d'un triangle !" << std::endl;
+                std::cout << "width :" << std::endl;
+                std::cin >> widthf;
+                std::cout << "height :" << std::endl;
+                std::cin >> heightf;
 
-            //     std::cout << "X :" << std::endl;
-            //     std::cin >> X;
-            //     std::cout << "Y :" << std::endl;
-            //     std::cin >> Y;
+                std::cout << "X :" << std::endl;
+                std::cin >> X;
+                std::cout << "Y :" << std::endl;
+                std::cin >> Y;
 
-            //     std::cout << "Thinkness :" << std::endl;
-            //     std::cin >> Thinkness;
+                std::cout << "Thinkness :" << std::endl;
+                std::cin >> Thinkness;
 
-            //     Triangle triangle(widthf, heightf,Thinkness);
-            //     Point place1(X, Y);
-            //     draw.addStockage(triangle, place1);
-            //     place1.~Point();
-            //     triangle.~Triangle();
-            //     system("clear");
-            //     break;
-            // }
+                triangle=new Triangle(widthf, heightf,Thinkness);
+                place1 =new Point(X, Y);
+                draw.addStockage(*triangle, *place1);
+                delete(place1);
+                delete(triangle);
+                system("clear");
+                break;
+            }
 
-            // case 5:
-            // {
-            //     std::cout << "Creation d'une fleche !" << std::endl;
-            //     std::cout << "width :" << std::endl;
-            //     std::cin >> widthf;
-            //     std::cout << "height :" << std::endl;
-            //     std::cin >> heightf;
+            case 5:
+            {
+                std::cout << "Creation d'une fleche !" << std::endl;
+                std::cout << "width :" << std::endl;
+                std::cin >> widthf;
+                std::cout << "height :" << std::endl;
+                std::cin >> heightf;
 
-            //     std::cout << "X :" << std::endl;
-            //     std::cin >> X;
-            //     std::cout << "Y :" << std::endl;
-            //     std::cin >> Y;
+                std::cout << "X :" << std::endl;
+                std::cin >> X;
+                std::cout << "Y :" << std::endl;
+                std::cin >> Y;
 
-            //     std::cout << "Thinkness :" << std::endl;
-            //     std::cin >> Thinkness;
+                std::cout << "Thinkness :" << std::endl;
+                std::cin >> Thinkness;
 
-            //     Arrow arrow(widthf, heightf, Thinkness);
-            //     Point place1(X, Y);
-            //     draw.addStockage(arrow, place1);
-            //     place1.~Point();
-            //     arrow.~Arrow();
-            //     system("clear");
-            //     break;
-            // }
+                arrow=new Arrow(widthf, heightf, Thinkness);
+                place1 =new Point(X, Y);
+                draw.addStockage(*arrow, *place1);
+                delete(place1);
+                delete(arrow);
+                system("clear");
+                break;
+            }
 
         case 6:
         {
-            // int list;
-            // scanf("%d",&list);
-            // draw.drawInTerminal(list);
             save();
             draw.save(FicName);
             break;
