@@ -1,6 +1,8 @@
 #include "FigTriangle.h"
 #include <iostream>
 
+// @brief constructor of the class Triangle 
+// @param width height int for width height of the Triangle
 Triangle::Triangle(const int width, const int height) : Figure(width, height)
 {
 
@@ -11,20 +13,14 @@ Triangle::Triangle(const int width, const int height) : Figure(width, height)
 
     drawSegment(Segment(pointHautGauche, pointHautDroit));
     drawSegment(Segment(pointHautGauche, pointBasGauche));
-    drawSegment(Segment(pointHautGauche, pointBasDroit));
+    drawSegment(Segment(pointHautDroit, pointBasGauche));
 
 
-
-
-    // Point pointBasGauche(0, 0);  FLECHE
-    // Point pointHautGauche(0, height - 1);  FLECHE
-    // Point pointHautDroit(width - 1, 0);   FLECHE
-
-    // drawSegment(Segment(pointBasGauche, pointHautGauche)); FLECHE
-    // drawSegment(Segment(pointBasGauche, pointHautDroit)); FLECHE
-    // drawSegment(Segment(pointHautDroit, pointHautGauche));FLECHE
 }
 
+// @brief draw is the function for draw the figure in the ternimal 
+// @param NULL
+// @return NULL
 void Triangle::draw() const
 {
     std::cout << "Affichage d'un triangle : " << std::endl

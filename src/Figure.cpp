@@ -121,39 +121,27 @@ void Figure::drawPoint(const Point &point, const float thickness )
     }
 }
 
-void Figure::drawSegment(const Segment &segment, const float thickness )
-{
+void Figure::drawSegment(const Segment& segment, const float thickness) {
 
-    /* Le point 1 est l'extrémité du segment le plus à gauche  */
     Point point1 = (segment.getDest().getX() < segment.getOrigin().getX())
-                       ? segment.getDest()
-                       : segment.getOrigin();
+        ? segment.getDest()
+        : segment.getOrigin();
 
-    /* Point2 est l'autre extrémité du segment */
     Point point2 = (point1.getX() == segment.getDest().getX())
-                       ? segment.getOrigin()
-                       : segment.getDest();
+        ? segment.getOrigin()
+        : segment.getDest();
 
-    /* Calcul des pentes */
     float dx = point1.getX() - point2.getX();
     float dy = point1.getY() - point2.getY();
 
-    /* On parcourt les x sur l'ensemble du segment */
-    for (int x = point1.getX(); x <= point2.getX(); x++)
-    {
-        /* On parcourt les y sur l'ensemble de la hauteur */
-        for (int y = 0; y < height; y++)
-        {
+    for (int x = point1.getX(); x <= point2.getX(); x++) {
+        for (int y = 0; y < height; y++) {
             float dist;
-            /* Si le segment est vertical, toutes les coordonnées
-                         parcourues sont bonnes */
-            /* Sinon, on dessine un point du segment si les coordonnées sont
-         * validées par l'equation de la droite */
+
             if ((dx == 0) ||
-                (fabs((float)y - (float)segment.getOrigin().getY() +
-                      (float)dy * (float)(x - segment.getDest().getX()) /
-                          (float)dx) < 1))
-            {
+                (fabs((float) y - (float) point1.getY() -
+                     (float) dy * (float) (x + point1.getX()) /
+                         (float) dx) < 1)) {
                 drawPoint(Point(x, y), thickness);
             }
         }

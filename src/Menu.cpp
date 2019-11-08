@@ -8,6 +8,10 @@
 #include "FigTriangle.h"
 #include "FigArrow.h"
 
+// @brief this function run is the active menu call for start the appliaction
+// you can choose with number between 1 to 8 for start a action
+// @param NULL
+// @return NULL
 void Menu::run()
 {
     char FicNamePreview[] = "preview";
@@ -16,7 +20,7 @@ void Menu::run()
     std::cin >> width;
     std::cout << "height :" << std::endl;
     std::cin >> height;
-
+// created of the drawing space , this define in Drawing.cpp 
     Drawing draw(width, height);
 
     while (1)
@@ -29,6 +33,7 @@ void Menu::run()
 
         case 1:
         {
+            //for square and cross we use pointer because during the deallocate of memory we have a double free in this area of region
             // std::cout << "choisissez la cote du carré, sa position en X et en Y" << std::endl;
             std::cout << "Creation d'un carre !" << std::endl;
             std::cout << "width :" << std::endl;
@@ -39,10 +44,10 @@ void Menu::run()
             std::cin >> Y;
 
             Point place0(X, Y);
-            Carre square(widthf);
-            draw.addStockage(square, place0);
+            Carre *square=new Carre(widthf);
+            draw.addStockage(*square, place0);
             place0.~Point();
-            square.~Carre();
+            delete(square);
             system("clear");
             break;
         }
@@ -59,11 +64,11 @@ void Menu::run()
             std::cout << "Y :" << std::endl;
             std::cin >> Y;
 
-            Cross cross(widthf, heightf);
+            Cross *cross=new Cross(widthf, heightf);
             Point place1(X, Y);
-            draw.addStockage(cross, place1);
+            draw.addStockage(*cross, place1);
             place1.~Point();
-            cross.~Cross();
+            delete(cross);
             system("clear");
             break;
         }
@@ -106,7 +111,7 @@ void Menu::run()
             Point place1(X, Y);
             draw.addStockage(triangle, place1);
             place1.~Point();
-            // triangle.~Triangle();
+            triangle.~Triangle();
             system("clear");
             break;
         }
@@ -128,7 +133,7 @@ void Menu::run()
             Point place1(X, Y);
             draw.addStockage(arrow, place1);
             place1.~Point();
-            // arrow.~Arrow();
+            arrow.~Arrow();
             system("clear");
             break;
         }
@@ -143,12 +148,14 @@ void Menu::run()
         {
             quit();
             draw.save(FicName);
+            draw.~Drawing();
             exit(0);
             break;
         }
 
         case 7:
         {
+            std::cout<< "before using it install: xwiever "<< std::endl;
             snprintf(FicNamePreview + strlen(FicNamePreview), 5, "%s", ".bmp");
             draw.save(FicNamePreview);
             system("xviewer preview.bmp");
@@ -164,7 +171,9 @@ void Menu::run()
         }
     }
 }
-
+// @brief save is the function for save your work with the creation and placement of of your Figure
+// @param NULL
+// @return NULL
 void Menu::save()
 {
     std::cout << "Vous allez enregistrer, taper le nom du fichier: (50 caractere max )" << std::endl;
@@ -172,6 +181,9 @@ void Menu::save()
     snprintf(FicName + strlen(FicName), 5, "%s", ".bmp");
 }
 
+// @brief quit is the function for quit the application and you save your work with the creation and placement of of your Figure
+// @param NULL
+// @return NULL
 void Menu::quit()
 {
     std::cout << "Vous allez quitter, taper le nom du fichier: (50 caractere max ) pour sauvegarder" << std::endl;
@@ -179,6 +191,9 @@ void Menu::quit()
     snprintf(FicName + strlen(FicName), 5, "%s", ".bmp");
 }
 
+// @brief this the constructor for the classe Menu
+// @param NULL
+// @return NULL
 Menu::Menu()
 {
     std::cout << "bienvenue dans votre application Paint " << std::endl;

@@ -10,15 +10,21 @@
 // |  _/`___||___/|_||_|\_|_. |_|_|_|\___. |_|  |_|_|\___/\___|/__/
 // |_|
 
+// @brief the constructor of the area of draw 
+// @param width is a int for the width of this area
+// @param height is a int for the heigth of this area
+// @return NULL
 Drawing::Drawing(const int width, const int height)
     : width(width), height(height)
 {
   image.resize(width * height);
 }
 
+// the destructor
 Drawing::~Drawing() {}
 
-/* Save image to file "filename" */
+/*@brief Save image to file "filename" */
+// @param string filename the name you want 
 void Drawing::save(std::string filename)
 {
 
@@ -27,18 +33,19 @@ void Drawing::save(std::string filename)
     throw std::runtime_error(
         "Drawing ne supporte que l'enregistrement d'images au format bmp");
   }
-#ifdef TEST
-  createTestImage();
-#endif
   draw();
   stbi_write_bmp(filename.c_str(), width, height, 1, image.data());
 }
 
+// @brief drawAFigure is the function to draw one figure at place you want   
+// @param figure the param of the class Figure you want to draw
+// @param place the param of the class Point is the place you want to draw
+// @return NULL
 void Drawing::drawAFigure(Figure figure, Point place)
 {
   int heightF=figure.getHeight();
   int widhtF=figure.getWidth();
-  int position = place.getX()+place.getY();
+  int position = place.getX()+place.getY()*width;
   for (int line = 0; line < heightF; line++)
   {
     for (int col = 0; col < widhtF; col++)
@@ -51,6 +58,9 @@ void Drawing::drawAFigure(Figure figure, Point place)
   // printf("\n");
 }
 
+// @brief draw is the function who draw all the figure in the vector of figure
+// @param NULL
+// @return NULL
 void Drawing::draw()
 {
   if (placeList.size()!=figList.size())
@@ -100,6 +110,10 @@ void Drawing::createTestImage()
   }
 }
 
+// @brief add a figure in the save's vector also his place 
+// @param figure the param of the class Figure you want to add to the vector
+// @param place the param of the class Point is the place you want to add to the vector
+// @return if the add is good
 bool Drawing::addStockage(Figure figure, Point place)
 {
   if (place.getX() < width || place.getX() > 0)
@@ -110,6 +124,6 @@ bool Drawing::addStockage(Figure figure, Point place)
       figList.push_back(figure);
     }
   }
-   printf("%ld",placeList.size());
-   fflush(stdout);
+  //  printf("%ld",placeList.size());
+  //  fflush(stdout);
 }

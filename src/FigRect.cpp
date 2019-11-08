@@ -1,6 +1,8 @@
 #include "FigRect.h"
 #include <iostream>
 
+// @brief constructor of the class Rect 
+// @param width height int for width height of the Rect
   Rect::Rect(const int width, const int height) : Figure(width, height) {
     Point pointHautGauche(0, 0);
     Point pointHautDroit(width - 1, 0);
@@ -12,7 +14,9 @@
     drawSegment(Segment(pointBasDroit, pointBasGauche));
     drawSegment(Segment(pointBasGauche, pointHautGauche));
   }
-
+// @brief draw is the function for draw the figure in the ternimal 
+// @param NULL
+// @return NULL
   void Rect::draw() const {
     std::cout << "Affichage d'un rectangle : " << std::endl << std::endl;
     Figure::draw();

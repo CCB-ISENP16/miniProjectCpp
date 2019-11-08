@@ -1,14 +1,10 @@
 #include <iostream>
 #include <string>
 
-#include "Drawing.h"
-#include "Figure.h"
-#include "Point.h"
-#include "FigSquare.h"
 #include "Menu.h"
+// @brief this is the main function who is call the start menu 
+// menu is a class defined in Menu.cpp
 
-const int width = 30;
-const int height = 40;
 
 int main(int argc, char **argv)
 {
