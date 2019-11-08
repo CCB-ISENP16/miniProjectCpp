@@ -19,3 +19,9 @@ void Cross::draw() const
             << std::endl;
   Figure::draw();
 }
+
+
+int Cross::getType() const 
+{
+  return type;
+}

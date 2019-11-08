@@ -13,8 +13,10 @@ private:
 public:
     Arrow(const int width, const int height, const float thickness = 1.0, const int value = 255);
     void draw() const;
-    int getType();
+    int getType() const;
     ~Arrow();
+    private:
+    Figure::Typefigure type = arrow;
 };
 
 #endif

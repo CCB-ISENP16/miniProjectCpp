@@ -134,3 +134,7 @@ int Figure::getWidth() const
 {
     return width;
 }
+int Figure::getType() const 
+{
+    return type;
+}

@@ -17,14 +17,20 @@ public:
     char getData(int place) const;
     int getHeight() const;
     int getWidth() const;
-    virtual int getType() const = 0;
+    virtual int getType() const ;
 
-
-
+    enum Typefigure
+    {
+        figure = 0,
+        rectangle,
+        carre,
+        cross,
+        arrow,
+        triangle
+    };
 
 protected:
     void clearBuffer();
-
     bool setPoint(const int col, const int line, const int value = 255);
 
     // bool setPoint(const int col, const int line);
@@ -34,18 +40,10 @@ protected:
     virtual void draw() const;
     void drawPoint(const Point &point, const float thickness = 1.0, const int value = 255);
     void drawSegment(const Segment &segment, const float thickness = 1.0, const int value = 255);
-    
-    enum Typefigure
-    {
-        rectangle = 0,
-        carre,
-        cross,
-        arrow,
-        triangle
-    };
+
 private:
     std::vector<unsigned char> buffer;
-
+    Figure::Typefigure type = figure;
     int width;
     int height;
 };

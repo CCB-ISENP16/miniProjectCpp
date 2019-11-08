@@ -8,7 +8,7 @@ class Carre : public Rect
 public:
   Carre(const int size, const float thickness = 1.0, const int value = 255);
   ~Carre();
-  int getType() const ;
+  int getType()  ;
 
   void draw() const;
 

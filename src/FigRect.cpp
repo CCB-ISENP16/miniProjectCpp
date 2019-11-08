@@ -24,3 +24,8 @@ void Rect::draw() const
             << std::endl;
   Figure::draw();
 }
+
+int Rect::getType() const
+{
+  return type;
+}

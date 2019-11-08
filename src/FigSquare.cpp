@@ -17,7 +17,7 @@ void Carre::draw() const
   Figure::draw();
 }
 
-int getType() 
+int Carre::getType()  
 {
-  return Carre::type;
+  return type;
 }
