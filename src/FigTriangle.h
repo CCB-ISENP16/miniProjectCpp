@@ -11,7 +11,10 @@ class Triangle : public Figure
 public:
     Triangle(const int width, const int height, const float thickness = 1.0, const int value = 255);
     void draw() const;
+    int getType() const;
     ~Triangle();
+
+    Figure::Typefigure type = triangle;
 };
 
 #endif

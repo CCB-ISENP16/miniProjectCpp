@@ -8,8 +8,12 @@ class Carre : public Rect
 public:
   Carre(const int size, const float thickness = 1.0, const int value = 255);
   ~Carre();
+  int getType() const ;
 
   void draw() const;
+
+protected:
+  Figure::Typefigure type = carre;
 };
 
 #endif

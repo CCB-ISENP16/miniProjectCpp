@@ -16,3 +16,8 @@ void Carre::draw() const
             << std::endl;
   Figure::draw();
 }
+
+int getType() 
+{
+  return Carre::type;
+}

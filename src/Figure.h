@@ -17,6 +17,10 @@ public:
     char getData(int place) const;
     int getHeight() const;
     int getWidth() const;
+    virtual int getType() const = 0;
+
+
+
 
 protected:
     void clearBuffer();
@@ -30,7 +34,15 @@ protected:
     virtual void draw() const;
     void drawPoint(const Point &point, const float thickness = 1.0, const int value = 255);
     void drawSegment(const Segment &segment, const float thickness = 1.0, const int value = 255);
-
+    
+    enum Typefigure
+    {
+        rectangle = 0,
+        carre,
+        cross,
+        arrow,
+        triangle
+    };
 private:
     std::vector<unsigned char> buffer;
 

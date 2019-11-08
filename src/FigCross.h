@@ -9,6 +9,7 @@ class Cross : public Figure
 public:
   Cross(const int width, const int height, const float thickness = 1.0, const int value = 255);
   ~Cross();
+  int getType();
 
   void draw() const;
 };

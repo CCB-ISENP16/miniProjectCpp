@@ -26,6 +26,12 @@ void Triangle::draw() const
     Figure::draw();
 }
 
+int getType()
+{
+    std::cout << "triangle" << std::endl;
+    return Triangle::type;
+}
+
 Triangle::~Triangle()
 {
 }
