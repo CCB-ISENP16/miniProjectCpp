@@ -7,6 +7,7 @@
 #include "string.h"
 #include "FigTriangle.h"
 #include "FigArrow.h"
+#include <string>
 
 // @brief this function run is the active menu call for start the appliaction
 // you can choose with number between 1 to 8 for start a action
@@ -24,8 +25,8 @@ void Menu::run()
     Drawing draw(width, height);
 
     while (1)
-    {
-        std::cout << "Que voulez vous faire ?\n1) Carré\n2) Croix\n3) Rectangle\n4) Triangle\n5) Fleche\n6) Save\n7) Open Preview\n8) Quit"
+ {
+        std::cout << "Que voulez vous faire ?\n1) Carré\n2) Croix\n3) Rectangle\n4) Triangle\n5) Fleche\n6) Save\n7) Open Preview (beta for next holydays)\n8) Quit"
                   << std::endl;
         std::cin >> choose;
         switch (choose)
@@ -153,16 +154,20 @@ void Menu::run()
             break;
         }
 
-        case 7:
-        {
-            std::cout<< "before using it install: xwiever "<< std::endl;
-            snprintf(FicNamePreview + strlen(FicNamePreview), 5, "%s", ".bmp");
-            draw.save(FicNamePreview);
-            system("xviewer preview.bmp");
-            system("rm -rf preview.bmp");
-            system("clear");
-            break;
-        }
+        // case 7:
+        // {
+        //     std::cout<< "before using it install: xwiever "<< std::endl;
+        //     snprintf(FicNamePreview + strlen(FicNamePreview), 5, "%s", ".bmp");
+        //     draw.save(FicNamePreview);
+        //     try{
+        //        if( !system("eog preview.bmp"))
+        //             throw  string::string("on ne peut pas ouvrir l'application");
+        //     }
+            
+        //     system("rm -rf preview.bmp");
+        //     system("clear");
+        //     break;
+        // }
 
         default:
         {

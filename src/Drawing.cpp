@@ -45,7 +45,7 @@ void Drawing::drawAFigure(Figure figure, Point place)
 {
   int heightF=figure.getHeight();
   int widhtF=figure.getWidth();
-  int position = place.getX()+place.getY()*width;
+  int position = place.getX()+place.getY()*height;
   for (int line = 0; line < heightF; line++)
   {
     for (int col = 0; col < widhtF; col++)
