@@ -3,13 +3,13 @@
 
 #include "FigRect.h"
 
-
-class Carre : public Rect {
+class Carre : public Rect
+{
 public:
-  Carre(const int size,const int thickness=1);
+  Carre(const int size, const float thickness = 1.0, const int value = 255);
   ~Carre();
 
-  void draw() const ;
+  void draw() const;
 };
 
 #endif

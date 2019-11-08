@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 
-class Segment {
+class Segment
+{
 public:
   Segment(const Point &a, const Point &b);
   void translation(const Point &nouvOrg);

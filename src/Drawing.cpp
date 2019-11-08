@@ -51,11 +51,9 @@ void Drawing::drawAFigure(Figure figure, Point place)
     for (int col = 0; col < widhtF; col++)
     {
       image.at(line * width + col +position) = figure.getData(line *widhtF+ col);
-      // printf("%d\t",image.at(line * width + col+position));
     }
-    // printf("\n");
   }
-  // printf("\n");
+
 }
 
 // @brief draw is the function who draw all the figure in the vector of figure
@@ -83,7 +81,7 @@ void Drawing::draw()
 /* Set every point of the image to 0 */
 void Drawing::clearImage()
 {
-  for (std::vector<char>::iterator it = image.begin(); it != image.end();
+  for (std::vector<unsigned char>::iterator it = image.begin(); it != image.end();
        it++)
   {
     *it = 0;

@@ -28,7 +28,7 @@ private:
 
   std::vector<Point> placeList;
   std::vector<Figure> figList;
-  std::vector<char> image;
+  std::vector<unsigned char> image;
 };
 
 #endif /* DRAWIN_H */

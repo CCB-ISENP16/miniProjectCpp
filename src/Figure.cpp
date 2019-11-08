@@ -1,6 +1,5 @@
 #include "Figure.h"
 
-
 Figure::Figure(const int width, const int height) : width(width), height(height)
 {
     buffer.resize(width * height);
@@ -23,7 +22,7 @@ char Figure::getData(int place) const
 // set all pixel to 0
 void Figure::clearBuffer()
 {
-    std::vector<char>::iterator it;
+    std::vector<unsigned char>::iterator it;
     for (it = buffer.begin(); it != buffer.end(); it++)
     {
         *it = 0;
@@ -36,45 +35,19 @@ bool Figure::setPoint(const int col, const int line, const int value)
     {
         return false;
     }
-    buffer.at(col * line) = value;
+    buffer.at(col + width * line) = value;
     return true;
 }
 
-bool Figure::setPoint(const int col, const int line)
-{
-    if (col < 0 || col >= width || line < 0 || line >= height)
-    {
-        return false;
-    }
-    buffer.at(col + width* line) = 255;
-    return true;
-}
-
-bool Figure::createlineV(const int col, const int line, const int value)
-{
-    if (col < 0 || col >= width || line < 0 || line >= height)
-    {
-        return false;
-    }
-    for (int a = 0; a < line; a++)
-    {
-        setPoint(col, a, value);
-    }
-    return true;
-}
-
-bool Figure::createlineH(const int col, const int line, const int value)
-{
-    if (col < 0 || col >= width || line < 0 || line >= height)
-    {
-        return false;
-    }
-    for (int a = 0; a < col; a++)
-    {
-        setPoint(a, line, value);
-    }
-    return true;
-}
+// bool Figure::setPoint(const int col, const int line)
+// {
+//     if (col < 0 || col >= width || line < 0 || line >= height)
+//     {
+//         return false;
+//     }
+//     buffer.at(col + width * line) = 255;
+//     return true;
+// }
 
 bool Figure::clearPoint(const int col, const int line)
 {
@@ -86,7 +59,7 @@ bool Figure::clearPoint(const int col, const int line)
     return true;
 }
 
- void  Figure::draw() const
+void Figure::draw() const
 {
     for (int line = 0; line < height; line++)
     {
@@ -99,7 +72,7 @@ bool Figure::clearPoint(const int col, const int line)
     std::cout << std::endl;
 }
 
-void Figure::drawPoint(const Point &point, const float thickness )
+void Figure::drawPoint(const Point &point, const float thickness, const int value)
 {
     for (int line = 0; line < height; line++)
     {
@@ -115,79 +88,49 @@ void Figure::drawPoint(const Point &point, const float thickness )
          */
             if (squaredVertDistance + squaredHorDistance < thickness * thickness)
             {
-                setPoint(col, line);
+                setPoint(col, line, value);
             }
         }
     }
 }
 
-void Figure::drawSegment(const Segment& segment, const float thickness) {
+void Figure::drawSegment(const Segment &segment, const float thickness, const int value)
+{
 
     Point point1 = (segment.getDest().getX() < segment.getOrigin().getX())
-        ? segment.getDest()
-        : segment.getOrigin();
+                       ? segment.getDest()
+                       : segment.getOrigin();
 
     Point point2 = (point1.getX() == segment.getDest().getX())
-        ? segment.getOrigin()
-        : segment.getDest();
+                       ? segment.getOrigin()
+                       : segment.getDest();
 
     float dx = point1.getX() - point2.getX();
     float dy = point1.getY() - point2.getY();
 
-    for (int x = point1.getX(); x <= point2.getX(); x++) {
-        for (int y = 0; y < height; y++) {
+    for (int x = point1.getX(); x <= point2.getX(); x++)
+    {
+        for (int y = 0; y < height; y++)
+        {
             float dist;
 
             if ((dx == 0) ||
-                (fabs((float) y - (float) point1.getY() -
-                     (float) dy * (float) (x + point1.getX()) /
-                         (float) dx) < 1)) {
-                drawPoint(Point(x, y), thickness);
+                (fabs((float)y - (float)point1.getY() -
+                      (float)dy * (float)(x + point1.getX()) /
+                          (float)dx) < 1))
+            {
+                drawPoint(Point(x, y), thickness, value);
             }
         }
     }
 }
 
-bool Figure::drawVertLine(const int col)
+int Figure::getHeight() const
 {
-    if (col < 0 || col >= width)
-    {
-        return false;
-    }
-
-    for (int counter = 0; counter < height; counter++)
-    {
-        if (!setPoint(col, counter))
-        {
-            std::cout << "Unable to set point : [" << col << ", " << counter << "]"
-                      << std::endl;
-        }
-    }
-    return true;
-}
-
-bool Figure::drawHorLine(const int line)
-{
-    if (line < 0 || line >= height)
-    {
-        return false;
-    }
-
-    for (int counter = 0; counter < width; counter++)
-    {
-        if (!setPoint(counter, line))
-        {
-            std::cout << "Unable to set point : [" << counter << ", " << line << "]"
-                      << std::endl;
-        }
-    }
-    return true;
-}
-
-int Figure::getHeight()const {
     return height;
 }
 
-int Figure::getWidth() const {
+int Figure::getWidth() const
+{
     return width;
 }

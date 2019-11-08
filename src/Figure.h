@@ -15,31 +15,24 @@ public:
     ~Figure();
 
     char getData(int place) const;
-    int getHeight()const;
+    int getHeight() const;
     int getWidth() const;
 
 protected:
     void clearBuffer();
 
-    bool setPoint(const int col, const int line, const int value);
+    bool setPoint(const int col, const int line, const int value = 255);
 
-    bool setPoint(const int col, const int line);
-
-    bool createlineV(const int col, const int line, const int value);
-
-    bool createlineH(const int col, const int line, const int value);
+    // bool setPoint(const int col, const int line);
 
     bool clearPoint(const int col, const int line);
 
     virtual void draw() const;
-    void drawPoint(const Point &point, const float thickness = 1);
-    void drawSegment(const Segment &segment, const float thickness = 1.f);
-    bool drawVertLine(const int col);
-    bool drawHorLine(const int line);
+    void drawPoint(const Point &point, const float thickness = 1.0, const int value = 255);
+    void drawSegment(const Segment &segment, const float thickness = 1.0, const int value = 255);
 
 private:
-
-    std::vector<char> buffer;
+    std::vector<unsigned char> buffer;
 
     int width;
     int height;

@@ -4,16 +4,15 @@
 
 class Menu
 {
-    public:
+public:
     Menu();
     ~Menu();
-    void run ();
+    void run();
     void save();
     void quit();
 
 private:
-    int choose, width, height, figure, widthf, heightf, X, Y,Intensity,Thinkness;
+    int choose, width, height, figure, widthf, heightf, X, Y, Intensity, Thinkness;
     char FicName[70];
-
 };
 #endif
