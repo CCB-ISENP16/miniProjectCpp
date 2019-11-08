@@ -72,32 +72,7 @@ void Drawing::draw()
     drawAFigure(figList.at(a),placeList.at(a));
   }
 }
-void Drawing::drawInTerminal(bool list)
-{
-  if (!list)
-  {
-  for(int line =0;line<height;line++)
-  {
-    for(int col=0;col<width;col++)
-    {
-      printf("%d\t",image.at(line * width + col));
-    }
-    printf("\n");
-  }
-  printf("\n");
-  }
-  else
-  {
-    {
-      printf("voici la liste des objets qui sont déssinés : \n");
-      for (int it = 0; it <figList.size();it++)
-       {
-         printf("%Figure,%d\n",figList.at(it),placeList.at(it));
-       }
-    }
-  }
-  
-}
+
 
 //            _             _                      _    _           _
 //  ___  _ _ <_> _ _  ___ _| |_ ___  ._ _ _  ___ _| |_ | |_  ___  _| | ___

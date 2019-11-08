@@ -48,3 +48,4 @@ FigArrow.o: src/FigArrow.cpp
 clean:
 	rm -f $(APP)
 	rm -f *.o
+	rm -f *.bmp
