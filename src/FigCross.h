@@ -7,7 +7,7 @@
 
 class Cross : public Figure {
 public:
-  Cross(const int width, const int height);
+  Cross(const int width, const int height,const float thickness=1);
   ~Cross();
 
   void draw() const ;

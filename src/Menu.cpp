@@ -21,11 +21,11 @@ void Menu::run()
     std::cin >> width;
     std::cout << "height :" << std::endl;
     std::cin >> height;
-// created of the drawing space , this define in Drawing.cpp 
+    // created of the drawing space , this define in Drawing.cpp
     Drawing draw(width, height);
 
     while (1)
- {
+    {
         std::cout << "Que voulez vous faire ?\n1) Carré\n2) Croix\n3) Rectangle\n4) Triangle\n5) Fleche\n6) Save\n7) Open Preview (beta for next holydays)\n8) Quit"
                   << std::endl;
         std::cin >> choose;
@@ -44,11 +44,14 @@ void Menu::run()
             std::cout << "Y :" << std::endl;
             std::cin >> Y;
 
+            std::cout << "Thinkness :" << std::endl;
+            std::cin >> Thinkness;
+
             Point place0(X, Y);
-            Carre *square=new Carre(widthf);
+            Carre *square = new Carre(widthf,Thinkness);
             draw.addStockage(*square, place0);
             place0.~Point();
-            delete(square);
+            delete (square);
             system("clear");
             break;
         }
@@ -65,11 +68,14 @@ void Menu::run()
             std::cout << "Y :" << std::endl;
             std::cin >> Y;
 
-            Cross *cross=new Cross(widthf, heightf);
+            std::cout << "Thinkness :" << std::endl;
+            std::cin >> Thinkness;
+
+            Cross *cross = new Cross(widthf, heightf,Thinkness);
             Point place1(X, Y);
             draw.addStockage(*cross, place1);
             place1.~Point();
-            delete(cross);
+            delete (cross);
             system("clear");
             break;
         }
@@ -86,7 +92,10 @@ void Menu::run()
             std::cout << "Y :" << std::endl;
             std::cin >> Y;
 
-            Rect rect(widthf, heightf);
+            std::cout << "Thinkness :" << std::endl;
+            std::cin >> Thinkness;
+
+            Rect rect(widthf, heightf,Thinkness);
             Point place2(X, Y);
             draw.addStockage(rect, place2);
             rect.~Rect();
@@ -108,7 +117,10 @@ void Menu::run()
             std::cout << "Y :" << std::endl;
             std::cin >> Y;
 
-            Triangle triangle(widthf, heightf);
+            std::cout << "Thinkness :" << std::endl;
+            std::cin >> Thinkness;
+
+            Triangle triangle(widthf, heightf,Thinkness);
             Point place1(X, Y);
             draw.addStockage(triangle, place1);
             place1.~Point();
@@ -130,7 +142,10 @@ void Menu::run()
             std::cout << "Y :" << std::endl;
             std::cin >> Y;
 
-            Arrow arrow(widthf, heightf);
+            std::cout << "Thinkness :" << std::endl;
+            std::cin >> Thinkness;
+
+            Arrow arrow(widthf, heightf, Thinkness);
             Point place1(X, Y);
             draw.addStockage(arrow, place1);
             place1.~Point();
@@ -141,6 +156,9 @@ void Menu::run()
 
         case 6:
         {
+            // int list;
+            // scanf("%d",&list);
+            // draw.drawInTerminal(list);
             save();
             draw.save(FicName);
             break;
@@ -154,20 +172,20 @@ void Menu::run()
             break;
         }
 
-        // case 7:
-        // {
-        //     std::cout<< "before using it install: xwiever "<< std::endl;
-        //     snprintf(FicNamePreview + strlen(FicNamePreview), 5, "%s", ".bmp");
-        //     draw.save(FicNamePreview);
-        //     try{
-        //        if( !system("eog preview.bmp"))
-        //             throw  string::string("on ne peut pas ouvrir l'application");
-        //     }
-            
-        //     system("rm -rf preview.bmp");
-        //     system("clear");
-        //     break;
-        // }
+            // case 7:
+            // {
+            //     std::cout<< "before using it install: xwiever "<< std::endl;
+            //     snprintf(FicNamePreview + strlen(FicNamePreview), 5, "%s", ".bmp");
+            //     draw.save(FicNamePreview);
+            //     try{
+            //        if( !system("eog preview.bmp"))
+            //             throw  string::string("on ne peut pas ouvrir l'application");
+            //     }
+
+            //     system("rm -rf preview.bmp");
+            //     system("clear");
+            //     break;
+            // }
 
         default:
         {

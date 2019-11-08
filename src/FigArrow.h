@@ -11,7 +11,7 @@ class Arrow : public Figure
 private:
     /* data */
 public:
-    Arrow(const int width, const int height);
+    Arrow(const int width, const int height,const float thickness=1);
     void draw() const;
     ~Arrow();
 };

@@ -9,7 +9,7 @@
 class Triangle : public Figure
 {
 public:
-    Triangle(const int width, const int height);
+    Triangle(const int width, const int height,const float thickness=1);
     void draw() const;
     ~Triangle();
 };

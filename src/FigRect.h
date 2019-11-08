@@ -9,7 +9,7 @@
 class Rect : public Figure
 {
 public:
-  Rect(const int width, const int height);
+  Rect(const int width, const int height,const float thickness=1);
   void draw() const;
 };
 

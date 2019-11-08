@@ -3,7 +3,7 @@
 
 // @brief constructor of the class Triangle 
 // @param width height int for width height of the Triangle
-Triangle::Triangle(const int width, const int height) : Figure(width, height)
+Triangle::Triangle(const int width, const int height,const float thickness) : Figure(width, height)
 {
 
     Point pointHautGauche(0, 0);
@@ -11,9 +11,9 @@ Triangle::Triangle(const int width, const int height) : Figure(width, height)
     Point pointBasGauche(0, height - 1);
     Point pointBasDroit(width - 1, height - 1);
 
-    drawSegment(Segment(pointHautGauche, pointHautDroit));
-    drawSegment(Segment(pointHautGauche, pointBasGauche));
-    drawSegment(Segment(pointHautDroit, pointBasGauche));
+    drawSegment(Segment(pointHautGauche, pointHautDroit),thickness);
+    drawSegment(Segment(pointHautGauche, pointBasGauche),thickness);
+    drawSegment(Segment(pointHautDroit, pointBasGauche),thickness);
 
 
 }

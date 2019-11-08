@@ -12,7 +12,7 @@ class Menu
     void quit();
 
 private:
-    int choose, width, height, figure, widthf, heightf, X, Y;
+    int choose, width, height, figure, widthf, heightf, X, Y,Intensity,Thinkness;
     char FicName[70];
 
 };

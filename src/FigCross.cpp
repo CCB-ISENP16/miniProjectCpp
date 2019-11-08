@@ -2,9 +2,9 @@
 
 // @brief constructor of the class Cross 
 // @param width height int for width height of the Cross
-  Cross::Cross(const int width, const int height) : Figure(width, height) {
-    drawSegment(Segment(Point(width / 2, 0), Point(width / 2, height - 1)));
-    drawSegment(Segment(Point(0, height / 2), Point(width - 1, height / 2)));
+  Cross::Cross(const int width, const int height,const float thickness) : Figure(width, height) {
+    drawSegment(Segment(Point(width / 2, 0), Point(width / 2, height - 1)),thickness);
+    drawSegment(Segment(Point(0, height / 2), Point(width - 1, height / 2)),thickness);
   }
   // the destructor
   Cross::~Cross(){};
