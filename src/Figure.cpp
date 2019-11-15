@@ -6,26 +6,26 @@ Figure::Figure(const int width, const int height) : width(width), height(height)
     clearBuffer();
 }
 
+// Déconstructeur de la figure
 Figure::~Figure()
 {
     if (!buffer.empty())
     {
-        buffer.clear();
+        buffer.clear(); // Si le buffer n'est pas vide on le vide avec la fonction clear
     }
 }
 
 char Figure::getData(int place) const
 {
-    return buffer.at(place);
+    return buffer.at(place); // Retourne la donnée du buffer a la place voulu
 }
 
-// set all pixel to 0
 void Figure::clearBuffer()
 {
     std::vector<unsigned char>::iterator it;
     for (it = buffer.begin(); it != buffer.end(); it++)
     {
-        *it = 0;
+        *it = 0; // non reinitialise le buffer a 0
     }
 }
 
@@ -33,29 +33,19 @@ bool Figure::setPoint(const int col, const int line, const int value)
 {
     if (col < 0 || col >= width || line < 0 || line >= height)
     {
-        return false;
+        return false; // gestion en cas de débordement
     }
-    buffer.at(col + width * line) = value;
-    return true;
+    buffer.at(col + width * line) = value; // on donne a chaque case du buffer la couleur que l'on veut (0-255)
+    return true;                           // retourne Vrai pour indiquer que tout s'est bien passé
 }
-
-// bool Figure::setPoint(const int col, const int line)
-// {
-//     if (col < 0 || col >= width || line < 0 || line >= height)
-//     {
-//         return false;
-//     }
-//     buffer.at(col + width * line) = 255;
-//     return true;
-// }
 
 bool Figure::clearPoint(const int col, const int line)
 {
     if (col < 0 || col >= width || line < 0 || line >= height)
     {
-        return false;
+        return false; // gestion en cas de débordement
     }
-    buffer.at(line * width + col) = 0;
+    buffer.at(line * width + col) = 0; // Initilisation d'un pixel a 0 pour "effacer"
     return true;
 }
 
@@ -65,7 +55,7 @@ void Figure::draw() const
     {
         for (int col = 0; col < width; col++)
         {
-            std::cout << buffer[line * width + col] << " ";
+            std::cout << buffer[line * width + col] << " "; // Affichage de la figure sur le terminal
         }
         std::cout << std::endl;
     }
@@ -125,16 +115,26 @@ void Figure::drawSegment(const Segment &segment, const float thickness, const in
     }
 }
 
+// @brief This function is called a "getter" it return the variable height which is private
+// @param NULL
+// @return height
 int Figure::getHeight() const
 {
-    return height;
+    return height; // permet de recuperer la height en dehors de la classe car c'est une variable privé
 }
 
+// @brief This function is called a "getter" it return the variable width which is private
+// @param NULL
+// @return width
 int Figure::getWidth() const
 {
-    return width;
+    return width; // permet de recuperer la width en dehors de la classe car c'est une variable privé
 }
-int Figure::getType() const 
+
+// @brief This function is called a "getter" it return the variable "figure" which is private
+// @param NULL
+// @return figure
+int Figure::getType() const
 {
-    return figure;
+    return figure; // permet de recuperer la figure en dehors de la classe car c'est une variable privé
 }

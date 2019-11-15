@@ -10,7 +10,7 @@
 // |  _/`___||___/|_||_|\_|_. |_|_|_|\___. |_|  |_|_|\___/\___|/__/
 // |_|
 
-// @brief the constructor of the area of draw 
+// @brief the constructor of the area of draw
 // @param width is a int for the width of this area
 // @param height is a int for the heigth of this area
 // @return NULL
@@ -24,7 +24,7 @@ Drawing::Drawing(const int width, const int height)
 Drawing::~Drawing() {}
 
 /*@brief Save image to file "filename" */
-// @param string filename the name you want 
+// @param string filename the name you want
 void Drawing::save(std::string filename)
 {
 
@@ -37,23 +37,22 @@ void Drawing::save(std::string filename)
   stbi_write_bmp(filename.c_str(), width, height, 1, image.data());
 }
 
-// @brief drawAFigure is the function to draw one figure at place you want   
+// @brief drawAFigure is the function to draw one figure at place you want
 // @param figure the param of the class Figure you want to draw
 // @param place the param of the class Point is the place you want to draw
 // @return NULL
 void Drawing::drawAFigure(Figure figure, Point place)
 {
-  int heightF=figure.getHeight();
-  int widhtF=figure.getWidth();
-  int position = place.getX()+place.getY()*height;
+  int heightF = figure.getHeight();                    // Récuperation de la longeur de la figure
+  int widhtF = figure.getWidth();                      // Récuperation de la largeur de la figure
+  int position = place.getX() + place.getY() * height; // Récupération de la position de la figure
   for (int line = 0; line < heightF; line++)
   {
     for (int col = 0; col < widhtF; col++)
     {
-      image.at(line * width + col +position) = figure.getData(line *widhtF+ col);
+      image.at(line * width + col + position) = figure.getData(line * widhtF + col); // On parcours l'ensemble et recupere la "couleur du pixel" (0-255)
     }
   }
-
 }
 
 // @brief draw is the function who draw all the figure in the vector of figure
@@ -61,16 +60,16 @@ void Drawing::drawAFigure(Figure figure, Point place)
 // @return NULL
 void Drawing::draw()
 {
-  if (placeList.size()!=figList.size())
+  if (placeList.size() != figList.size())
   {
-    exit(0);
+    std::cout << "Il faut une place pour chaque figure" << std::endl;
+    exit(0); // Si il n'y a pas de place pour une nouvelle figure, on quitte le programme
   }
-  for(int a=0;a<placeList.size();a++)
+  for (int a = 0; a < placeList.size(); a++)
   {
-    drawAFigure(figList.at(a),placeList.at(a));
+    drawAFigure(figList.at(a), placeList.at(a)); // Sinon, pour chaque figure on dessine la figure a la place indiqué
   }
 }
-
 
 //            _             _                      _    _           _
 //  ___  _ _ <_> _ _  ___ _| |_ ___  ._ _ _  ___ _| |_ | |_  ___  _| | ___
@@ -84,7 +83,7 @@ void Drawing::clearImage()
   for (std::vector<unsigned char>::iterator it = image.begin(); it != image.end();
        it++)
   {
-    *it = 0;
+    *it = 0; // Remplissage de l'image par des pixels noirs
   }
 }
 
@@ -100,20 +99,18 @@ void Drawing::createTestImage()
   }
 }
 
-// @brief add a figure in the save's vector also his place 
+// @brief add a figure in the save's vector also his place
 // @param figure the param of the class Figure you want to add to the vector
 // @param place the param of the class Point is the place you want to add to the vector
 // @return if the add is good
 bool Drawing::addStockage(Figure &figure, Point &place)
 {
-  if (place.getX() < width || place.getX() > 0)
+  if (place.getX() < width || place.getX() > 0) // Test des coordonées, il faut quelle soit comprise entre 0 et height et 0 et width
   {
     if (place.getY() < width || place.getY() > 0)
     {
-      placeList.push_back(place);
-      figList.push_back(figure);
+      placeList.push_back(place); // On place a la fin du vecteur de char la place de la figure
+      figList.push_back(figure);  // On place au fin du vecteur de char la figure
     }
   }
-  //  printf("%ld",placeList.size());
-  //  fflush(stdout);
 }
