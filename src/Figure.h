@@ -43,7 +43,6 @@ protected:
 
 private:
     std::vector<unsigned char> buffer;
-    Figure::Typefigure type = figure;
     int width;
     int height;
 };

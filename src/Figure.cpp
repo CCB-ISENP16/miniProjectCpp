@@ -136,5 +136,5 @@ int Figure::getWidth() const
 }
 int Figure::getType() const 
 {
-    return type;
+    return figure;
 }
